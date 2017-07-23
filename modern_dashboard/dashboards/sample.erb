@@ -1,25 +1,86 @@
+<script type='text/javascript'>
+    $(function() {
+        Dashing.gridsterLayout('[{"col":4,"row":1,"size_x":1,"size_y":1},{"col":2,"row":1,"size_x":2,"size_y":1},{"col":3,"row":2,"size_x":2,"size_y":1},{"col":1,"row":1,"size_x":1,"size_y":1},{"col":1,"row":2,"size_x":2,"size_y":1},{"col":1,"row":3,"size_x":2,"size_y":1}]')
+    });
+</script>
 <% content_for :title do %>My super sweet dashboard<% end %>
 <div class="gridster">
   <ul>
-    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="welcome" data-view="Text" data-title="Hello" data-text="This is your shiny new dashboard." data-moreinfo="Protip: You can drag the widgets around!"></div>
+
+
+    <li  data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+
+      <div data-id="synergy" data-view="Meter" data-title="This month sale" data-min="0" data-max="1000"></div>
     </li>
+
+    <li   data-row="2" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="sales_barchart" data-view ="BarChart" data-title=" Sales Bar Chart" data-moreinfo=""></div>
+    </li>
+
+
+
+    <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="collection_barchart" data-view ="BarChart" data-title=" Collection Bar Chart" data-moreinfo=""></div>
+    </li>
+
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="synergy" data-view="Meter" data-title="Synergy" data-height="200" data-width="200" data-min="0" data-max="100" data-suffix="%"></div>
+      <div data-id="synergy" data-view="Meter"  data-title="This week sale" data-min="0" data-max="100"></div>
     </li>
 
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="2">
-      <div data-id="buzzwords" data-view="List" data-unordered="true" data-title="Buzzwords" data-moreinfo="# of times said around the office"></div>
+
+    <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="customer_barchart" data-view ="BarChart" data-title=" Customer Bar Chart" data-moreinfo=""></div>
     </li>
 
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="valuation" data-view="Number" data-title="Current Valuation" data-moreinfo="In billions" data-prefix="$"></div>
+
+    <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
+        <div style="overflow-x: auto;">
+        <canvas id="pie" style="width: 600px; height: 500px;"></canvas>
+      </div>
+
     </li>
 
-    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="convergence" data-view="Graph" data-title="Convergence" style="background-color:#ff9618"></div>
-    </li>
+
   </ul>
-  <center><div style="font-size: 12px">Try this: curl -d '{ "auth_token": "YOUR_AUTH_TOKEN", "text": "Hey, Look what I can do!" }' \http://<%=request.host%>:<%=request.port%>/widgets/welcome</div></center>
-</div>
+  </div>
+<script type="text/javascript" charset="utf-8">
+  function pie_chart() {
+      var ctx = $("#pie");
+      var data = {
+          datasets: [{
+              data: [random_number(), 10],
+              backgroundColor: [
+                  "#FF6384",
+                  "#36A2EB",
+                  "#FFCE56"
+              ],
+              hoverBackgroundColor: [
+                  "#FF6384",
+                  "#36A2EB",
+                  "#FFCE56"
+              ]
+          }],
+
+          // These labels appear in the legend and in the tooltips when hovering different arcs
+          labels: [
+              'Your contribution',
+              'team contribution'
+
+          ]
+      };
+      var myPieChart = new Chart(ctx,{
+          type: 'pie',
+          data: data,
+      });
+
+      function random_number() {
+          return Math.random();
+      }
+
+  }
+  pie_chart()
+  setInterval(pie_chart, 5000)
+
+
+</script>
