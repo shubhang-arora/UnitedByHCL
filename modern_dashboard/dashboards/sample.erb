@@ -1,6 +1,6 @@
 <script type='text/javascript'>
     $(function() {
-        Dashing.gridsterLayout('[{"col":4,"row":1,"size_x":1,"size_y":1},{"col":2,"row":1,"size_x":2,"size_y":1},{"col":3,"row":2,"size_x":2,"size_y":1},{"col":1,"row":1,"size_x":1,"size_y":1},{"col":1,"row":2,"size_x":2,"size_y":1},{"col":1,"row":3,"size_x":2,"size_y":1}]')
+        Dashing.gridsterLayout('[{"col":4,"row":1,"size_x":1,"size_y":1},{"col":2,"row":1,"size_x":2,"size_y":1},{"col":3,"row":2,"size_x":2,"size_y":1},{"col":1,"row":1,"size_x":1,"size_y":1},{"col":1,"row":2,"size_x":2,"size_y":1},{"col":1,"row":3,"size_x":2,"size_y":1},{"col":3,"row":3,"size_x":2,"size_y":1}]')
     });
 </script>
 <% content_for :title do %>My super sweet dashboard<% end %>
@@ -46,6 +46,10 @@
 
     </li>
 
+    <li  style = "width : 590px; height: 420px;" data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="welcome" data-view="Text" data-title="Areas in which you are AWESOME!" data-text="Paid up no. & Sales Value"></div>
+    </li>
+
 
   </ul>
   </div>
@@ -69,8 +73,8 @@
 
           // These labels appear in the legend and in the tooltips when hovering different arcs
           labels: [
-              'Your contribution',
-              'team contribution'
+              'Your contribution in SALES VALUE',
+              'team contribution in SALES VALUE'
 
           ]
       };
