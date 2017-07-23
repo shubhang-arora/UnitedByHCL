@@ -14,13 +14,17 @@
     </li>
 
     <li   data-row="2" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="sales_barchart" data-view ="BarChart" data-title=" Sales Bar Chart" data-moreinfo=""></div>
+      <div style="overflow-x: auto;">
+        <canvas id="sales"  style="width: 600px; height: 350px;"></canvas>
+      </div>
     </li>
 
 
 
     <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="collection_barchart" data-view ="BarChart" data-title=" Collection Bar Chart" data-moreinfo=""></div>
+      <div style="overflow-x: auto;">
+        <canvas id="customer"  style="width: 600px; height: 350px;"></canvas>
+      </div>
     </li>
 
 
@@ -30,8 +34,9 @@
 
 
     <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="customer_barchart" data-view ="BarChart" data-title=" Customer Bar Chart" data-moreinfo=""></div>
-    </li>
+      <div style="overflow-x: auto;">
+        <canvas id="collection"  style="width: 600px; height: 350px;"></canvas>
+      </div> </li>
 
 
     <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
@@ -71,7 +76,7 @@
       };
       var myPieChart = new Chart(ctx,{
           type: 'pie',
-          data: data,
+          data: data
       });
 
       function random_number() {
@@ -83,4 +88,221 @@
   setInterval(pie_chart, 5000)
 
 
+</script>
+<script type="text/javascript" charset="utf-8">
+  function sales_bar()
+  {
+      var ctx = $("#sales");
+      var data = {
+          labels: ["May", "june", "Maths"],
+          datasets: [
+              {
+                  label: "Sales",
+                  fill: false,
+                  lineTension: 0,
+                  backgroundColor: "#FF6384",
+                  borderColor: "rgba(75,192,192,1)",
+                  borderCapStyle: 'butt',
+                  borderDash: [],
+                  borderDashOffset: 0.0,
+                  borderJoinStyle: 'miter',
+                  pointBorderColor: "rgba(75,192,192,1)",
+                  pointBackgroundColor: "#fff",
+                  pointBorderWidth: 1,
+                  pointHoverRadius: 5,
+                  pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                  pointHoverBorderColor: "rgba(220,220,220,1)",
+                  pointHoverBorderWidth: 2,
+                  pointRadius: 1,
+                  pointHitRadius: 10,
+                  data: [
+                      39, 51, 28
+                  ],
+                  spanGaps: false
+              }
+          ]
+      };
+      var myBarChart = new Chart(ctx, {
+          type: 'bar',
+          data: data,
+          options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          stepSize: 10,
+                          beginAtZero: false
+                      },
+                      scaleLabel: {
+                          display: true,
+                          labelString: 'Sales'
+                      }
+                  }],
+                  xAxes: [{
+                      ticks: {
+                          stepSize: 1,
+                          beginAtZero: false
+                      },
+                      scaleLabel: {
+                          display: true,
+                          labelString: '3 months data'
+                      }
+                  }]
+              }
+          }
+      });
+
+  }
+
+    function random_number() {
+        return Math.random() * 70 + 20;
+    }
+
+    sales_bar();
+    setInterval(sales_bar, 10000);
+</script>
+
+
+
+<script type="text/javascript" charset="utf-8">
+    function customer_bar()
+    {
+        var ctx = $("#customer");
+        var data = {
+            labels: ["May", "june", "Maths"],
+            datasets: [
+                {
+                    label: "Customer",
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#36A2EB",
+                    borderColor: "rgba(179,181,198,1)",
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    data: [
+                       100, 89, 65
+    ],
+        spanGaps: false
+    }
+            ]
+        };
+        var myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            stepSize: 10,
+                            beginAtZero: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Sales'
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            stepSize: 1,
+                            beginAtZero: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: '3 months data'
+                        }
+                    }]
+                }
+            }
+        });
+
+    }
+
+    function random_number() {
+        return Math.random() * 70 + 20;
+    }
+
+    customer_bar();
+    setInterval(customer_bar, 10000);
+</script>
+
+<script type="text/javascript" charset="utf-8">
+    function collection_bar()
+    {
+        var ctx = $("#collection");
+        var data = {
+            labels: ["May", "june", "Maths"],
+            datasets: [
+                {
+                    label: "Collection",
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#36A2EB",
+                    borderColor: "rgba(179,181,198,1)",
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    data: [
+                        100, 89, 65
+                    ],
+                    spanGaps: false
+                }
+            ]
+        };
+        var myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            stepSize: 10,
+                            beginAtZero: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Sales'
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            stepSize: 1,
+                            beginAtZero: false
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: '3 months data'
+                        }
+                    }]
+                }
+            }
+        });
+
+    }
+
+    function random_number() {
+        return Math.random() * 70 + 20;
+    }
+
+    collection_bar();
+    setInterval(collection_bar, 10000);
 </script>
