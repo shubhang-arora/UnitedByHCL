@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="12d811a5-64ae-46f2-99fe-5bd5919cbb26" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/sample.erb" afterPath="$PROJECT_DIR$/dashboards/sample.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobs/sample.rb" afterPath="$PROJECT_DIR$/jobs/sample.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,8 +35,8 @@
       <file leaf-file-name="sample.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dashboards/sample.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="51" column="122" lean-forward="false" selection-start-line="51" selection-start-column="122" selection-end-line="51" selection-end-column="122" />
+            <state relative-caret-position="171">
+              <caret line="14" column="77" lean-forward="false" selection-start-line="14" selection-start-column="77" selection-end-line="14" selection-end-column="77" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#canvas#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
@@ -97,7 +96,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>month</find>
       <find>clocl</find>
       <find>sales</find>
       <find>SCHE</find>
@@ -111,6 +109,7 @@
       <find>TExt</find>
       <find>sale</find>
       <find>week</find>
+      <find>month</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -330,12 +329,12 @@
       <option name="presentableId" value="Default" />
       <updated>1500810565834</updated>
       <workItem from="1500810571322" duration="564000" />
-      <workItem from="1500811165792" duration="13366000" />
+      <workItem from="1500811165792" duration="13555000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13930000" />
+    <option name="totallyTimeSpent" value="14119000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="44" width="1346" height="704" extended-state="0" />
@@ -431,8 +430,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboards/sample.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="51" column="122" lean-forward="false" selection-start-line="51" selection-start-column="122" selection-end-line="51" selection-end-column="122" />
+        <state relative-caret-position="171">
+          <caret line="14" column="77" lean-forward="false" selection-start-line="14" selection-start-column="77" selection-end-line="14" selection-end-column="77" />
           <folding>
             <element signature="n#style#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#canvas#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
