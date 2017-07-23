@@ -5,6 +5,8 @@
 </script>
 <% content_for :title do %>My super sweet dashboard<% end %>
 <div class="gridster">
+
+  <h1>Lead agent dashboard</h1>
   <ul>
 
 
@@ -47,7 +49,7 @@
     </li>
 
     <li  style = "width : 590px; height: 420px;" data-row="1" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="welcome" data-view="Text" data-title="Areas in which you are AWESOME!" data-text="Paid up no. & Sales Value"></div>
+      <div data-id="welcome" data-view="Text" data-title="Areas in which you are AWESOME!" data-text="Recent new customers. & Sales Value"></div>
     </li>
 
 
@@ -98,7 +100,7 @@
   {
       var ctx = $("#sales");
       var data = {
-          labels: ["May", "june", "July"],
+          labels: ["May", "June", "July"],
           datasets: [
               {
                   label: "Sales",
@@ -194,7 +196,7 @@
                     pointRadius: 1,
                     pointHitRadius: 10,
                     data: [
-                       100, 89, 65
+                       139, 138, 129
     ],
         spanGaps: false
     }
