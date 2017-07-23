@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="12d811a5-64ae-46f2-99fe-5bd5919cbb26" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/sample.erb" afterPath="$PROJECT_DIR$/dashboards/sample.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/sampletv.erb" afterPath="$PROJECT_DIR$/dashboards/sampletv.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobs/sample.rb" afterPath="$PROJECT_DIR$/jobs/sample.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +35,8 @@
       <file leaf-file-name="sample.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dashboards/sample.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="31" column="105" lean-forward="false" selection-start-line="31" selection-start-column="105" selection-end-line="31" selection-end-column="105" />
+            <state relative-caret-position="-279">
+              <caret line="12" column="33" lean-forward="false" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#canvas#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
@@ -330,12 +328,12 @@
       <option name="presentableId" value="Default" />
       <updated>1500810565834</updated>
       <workItem from="1500810571322" duration="564000" />
-      <workItem from="1500811165792" duration="12657000" />
+      <workItem from="1500811165792" duration="12866000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13221000" />
+    <option name="totallyTimeSpent" value="13430000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="44" width="1346" height="704" extended-state="0" />
@@ -431,8 +429,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboards/sample.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="31" column="105" lean-forward="false" selection-start-line="31" selection-start-column="105" selection-end-line="31" selection-end-column="105" />
+        <state relative-caret-position="-279">
+          <caret line="12" column="33" lean-forward="false" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
           <folding>
             <element signature="n#style#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#canvas#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
