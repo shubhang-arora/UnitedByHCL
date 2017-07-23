@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="12d811a5-64ae-46f2-99fe-5bd5919cbb26" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/sample.erb" afterPath="$PROJECT_DIR$/dashboards/sample.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/sampletv.erb" afterPath="$PROJECT_DIR$/dashboards/sampletv.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobs/sample.rb" afterPath="$PROJECT_DIR$/jobs/sample.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,16 +19,16 @@
       <file leaf-file-name="sampletv.erb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dashboards/sampletv.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="378">
+              <caret line="33" column="25" lean-forward="false" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
               <folding>
                 <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#li#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#li#4;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#li#5;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#li#6;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#center#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#2;n#ul#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#li#3;n#ul#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#li#6;n#ul#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#li#7;n#ul#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#li#8;n#ul#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#center#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -36,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/dashboards/sample.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="171">
-              <caret line="246" column="41" lean-forward="false" selection-start-line="246" selection-start-column="41" selection-end-line="246" selection-end-column="41" />
+              <caret line="31" column="105" lean-forward="false" selection-start-line="31" selection-start-column="105" selection-end-line="31" selection-end-column="105" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#canvas#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
@@ -75,8 +77,8 @@
       <file leaf-file-name="sample.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jobs/sample.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+            <state relative-caret-position="198">
+              <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -105,9 +107,10 @@
       <find>collec</find>
       <find>text</find>
       <find>collection</find>
-      <find>TExt</find>
       <find>your</find>
       <find>maths</find>
+      <find>TExt</find>
+      <find>sale</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -327,12 +330,12 @@
       <option name="presentableId" value="Default" />
       <updated>1500810565834</updated>
       <workItem from="1500810571322" duration="564000" />
-      <workItem from="1500811165792" duration="10972000" />
+      <workItem from="1500811165792" duration="12657000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11536000" />
+    <option name="totallyTimeSpent" value="13221000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="44" width="1346" height="704" extended-state="0" />
@@ -404,24 +407,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboards/sampletv.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="378">
+          <caret line="33" column="25" lean-forward="false" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
           <folding>
             <element signature="n#style#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#li#4;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#li#5;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#li#6;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#center#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#2;n#ul#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#3;n#ul#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#li#6;n#ul#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#li#7;n#ul#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#li#8;n#ul#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jobs/sample.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+        <state relative-caret-position="198">
+          <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -429,7 +432,7 @@
     <entry file="file://$PROJECT_DIR$/dashboards/sample.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
-          <caret line="246" column="41" lean-forward="false" selection-start-line="246" selection-start-column="41" selection-end-line="246" selection-end-column="41" />
+          <caret line="31" column="105" lean-forward="false" selection-start-line="31" selection-start-column="105" selection-end-line="31" selection-end-column="105" />
           <folding>
             <element signature="n#style#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#canvas#0;n#div#0;n#li#1;n#ul#0;n#div#0;n#!!top" expanded="true" />

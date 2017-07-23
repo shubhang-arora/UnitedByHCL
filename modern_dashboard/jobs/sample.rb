@@ -9,5 +9,6 @@ SCHEDULER.every '2s' do
 
   send_event('valuation', { current: current_valuation, last: last_valuation })
   send_event('karma', { current: current_karma, last: last_karma })
-  send_event('synergy',   { value: rand(100) })
+  send_event('synergy_week',   { value: rand(100) })
+  send_event('synergy_month',   { value: rand(500) })
 end
