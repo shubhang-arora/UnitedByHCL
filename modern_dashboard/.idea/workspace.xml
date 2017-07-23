@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12d811a5-64ae-46f2-99fe-5bd5919cbb26" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboards/sample.erb" afterPath="$PROJECT_DIR$/dashboards/sample.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jobs/sample.rb" afterPath="$PROJECT_DIR$/jobs/sample.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,7 +32,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sample.erb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sample.erb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dashboards/sample.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-279">
@@ -72,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sample.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sample.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jobs/sample.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
-              <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+              <caret line="11" column="49" lean-forward="true" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -109,6 +109,7 @@
       <find>maths</find>
       <find>TExt</find>
       <find>sale</find>
+      <find>week</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -128,8 +129,8 @@
         <option value="$PROJECT_DIR$/widgets/bar_chart/bar_chart.scss" />
         <option value="$PROJECT_DIR$/widgets/bar_chart/my_barchart_job.rb" />
         <option value="$PROJECT_DIR$/dashboards/sampletv.erb" />
-        <option value="$PROJECT_DIR$/jobs/sample.rb" />
         <option value="$PROJECT_DIR$/dashboards/sample.erb" />
+        <option value="$PROJECT_DIR$/jobs/sample.rb" />
       </list>
     </option>
   </component>
@@ -328,12 +329,12 @@
       <option name="presentableId" value="Default" />
       <updated>1500810565834</updated>
       <workItem from="1500810571322" duration="564000" />
-      <workItem from="1500811165792" duration="12866000" />
+      <workItem from="1500811165792" duration="12974000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13430000" />
+    <option name="totallyTimeSpent" value="13538000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="44" width="1346" height="704" extended-state="0" />
@@ -419,14 +420,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jobs/sample.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dashboards/sample.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-279">
@@ -442,6 +435,14 @@
             <element signature="n#style#0;n#canvas#0;n#div#0;n#li#5;n#ul#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#li#6;n#ul#0;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jobs/sample.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="49" lean-forward="true" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
