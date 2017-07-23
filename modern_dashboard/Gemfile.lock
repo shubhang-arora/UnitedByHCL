@@ -25,6 +25,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     equalizer (0.0.11)
     eventmachine (1.2.3)
+    eventmachine (1.2.3-x64-mingw32)
     execjs (2.0.2)
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
@@ -91,13 +92,15 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.4)
+    unf_ext (0.0.7.4-x64-mingw32)
 
 PLATFORMS
   ruby
+  x64-mingw32
 
 DEPENDENCIES
   dashing
   twitter (>= 5.9.0)
 
 BUNDLED WITH
-   1.11.2
+   1.15.3

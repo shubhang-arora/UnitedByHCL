@@ -1,163 +1,260 @@
 <script type='text/javascript'>
     $(function() {
-        Dashing.gridsterLayout('[{"col":2,"row":1,"size_x":1,"size_y":1},{"col":3,"row":1,"size_x":2,"size_y":1},{"col":3,"row":2,"size_x":2,"size_y":1},{"col":1,"row":1,"size_x":1,"size_y":1},{"col":1,"row":2,"size_x":2,"size_y":1},{"col":1,"row":3,"size_x":2,"size_y":1},{"col":3,"row":3,"size_x":2,"size_y":1}]')
+        Dashing.numColumns = 3
     });
 </script>
-<% content_for :title do %>My super sweet dashboard<% end %>
-<div class="gridster">
+<style type="text/css">
+    .widget-number {
 
+        background-color: #47bbb3;
+
+    .title {
+        color: $title-color;
+    }
+
+    .value {
+        color: #fff;
+    }
+
+    .change-rate {
+        font-weight: 500;
+        font-size: 30px;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .more-info {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .updated-at {
+        color: rgba(0, 0, 0, 0.3);
+    }
+
+    }
+</style>
+
+
+<% content_for :title do %>1080p dashboard<% end %>
+
+<div class="gridster">
   <h1>Lead agent dashboard</h1>
   <ul>
-
-
-    <li  data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-
-      <div data-id="synergy_month" data-view="Meter" data-title="This month sale" data-min="0" data-max="500"></div>
-    </li>
-
-    <li   data-row="2" data-col="1" data-sizex="2" data-sizey="1">
-      <div style="overflow-x: auto;">
-        <canvas id="sales"  style="width: 600px; height: 350px;"></canvas>
-      </div>
-    </li>
-
-
-
-    <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
-      <div style="overflow-x: auto;">
-        <canvas id="customer"  style="width: 600px; height: 350px;"></canvas>
-      </div>
-    </li>
-
-
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="synergy_week" data-view="Meter"  data-title="This week sale" data-min="0" data-max="500"></div>
+      <div data-id="synergy_month" data-view="Meter" data-title="This month's sale" data-min="0" data-max="500"></div>
     </li>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
 
-
-    <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
       <div style="overflow-x: auto;">
-        <canvas id="collection"  style="width: 600px; height: 350px;"></canvas>
-      </div> </li>
-
-
-    <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
-        <div style="overflow-x: auto;">
         <canvas id="pie" style="width: 600px; height: 500px;"></canvas>
       </div>
-
     </li>
-
-    <li  style = "width : 590px; height: 420px;" data-row="1" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="welcome" data-view="Text" data-title="Areas in which you are AWESOME!" data-text="Recent new customers. & Sales Value"></div>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="synergy_week" data-view="Meter"  data-title="This week's sale" data-min="0" data-max="500"></div>
     </li>
-
-
+    <li data-row="2" data-col="1" data-sizex="1" data-sizey="1">
+      <div class="widget widget-number valuation">
+        <h1 class="title">Sales Value</h1>
+        <h2 class="value">12.2K</h2>
+        <p class="change-rate">
+          <i class="fa fa-arrow-up"></i><span>60%</span>
+        </p>
+        <p class="updated-at">Last updated at <%= Time.now.strftime("%H:%M") %></p>
+      </div>
+    </li>
+    <li data-row="2" data-col="2" data-sizex="1" data-sizey="1">
+        <div data-id="welcome" data-view="Text" data-title="Areas in which you are AWESOME!" data-text="No of customers. & Sales Value"></div>
+    </li>
+    <li data-row="2" data-col="3" data-sizex="1" data-sizey="1">
+      <div class="widget widget-number valuation">
+        <h1 class="title">New Customers</h1>
+        <h2 class="value">61</h2>
+        <p class="change-rate">
+          <i class="fa fa-arrow-down"></i><span>35%</span>
+        </p>
+        <p class="updated-at">Last updated at <%= Time.now.strftime("%H:%M") %></p>
+      </div>
+    </li>
+    <li data-row="3" data-col="1" data-sizex="1" data-sizey="2">
+      <div style="overflow-x: auto;">
+        <canvas id="customer"></canvas>
+      </div>
+    </li>
+    <li data-row="3" data-col="2" data-sizex="1" data-sizey="2">
+      <div style="overflow-x: auto;">
+        <canvas id="sales"></canvas>
+      </div>
+    </li>
+    <li data-row="3" data-col="3" data-sizex="1" data-sizey="2">
+      <div style="overflow-x: auto;">
+        <canvas id="collection"></canvas>
+      </div>
+    </li>
   </ul>
-  </div>
+</div>
 <script type="text/javascript" charset="utf-8">
-  function pie_chart() {
-      var ctx = $("#pie");
-      var data = {
-          datasets: [{
-              data: [random_number(), 10],
-              backgroundColor: [
-                  "#FF6384",
-                  "#36A2EB",
-                  "#FFCE56"
-              ],
-              hoverBackgroundColor: [
-                  "#FF6384",
-                  "#36A2EB",
-                  "#FFCE56"
-              ]
-          }],
+    function pie_chart() {
+        var ctx = $("#pie");
+        var data = {
+            datasets: [{
+                data: [random_number(), 10],
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }],
 
-          // These labels appear in the legend and in the tooltips when hovering different arcs
-          labels: [
-              'Your contribution in SALES VALUE',
-              'team contribution in SALES VALUE'
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: [
+                'Your contribution',
+                'Team contribution'
 
-          ]
-      };
-      var myPieChart = new Chart(ctx,{
-          type: 'pie',
-          data: data
-      });
+            ]
+        };
+        var myPieChart = new Chart(ctx,{
+            type: 'pie',
+            data: data,
+            options: {
+                title: {
+                    display: true,
+                    text: 'Sales Value',
+                    fontSize: 15
+                },
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                }
+            }
+        });
 
-      function random_number() {
-          return Math.random();
-      }
+        function random_number() {
+            return Math.random();
+        }
 
-  }
-  pie_chart()
-  setInterval(pie_chart, 5000)
+    }
+    pie_chart()
+    setInterval(pie_chart, 5000)
 
 
 </script>
 <script type="text/javascript" charset="utf-8">
-  function sales_bar()
-  {
-      var ctx = $("#sales");
-      var data = {
-          labels: ["May", "June", "July"],
-          datasets: [
-              {
-                  label: "Sales",
-                  fill: false,
-                  lineTension: 0,
-                  backgroundColor: "#FF6384",
-                  borderColor: "rgba(75,192,192,1)",
-                  borderCapStyle: 'butt',
-                  borderDash: [],
-                  borderDashOffset: 0.0,
-                  borderJoinStyle: 'miter',
-                  pointBorderColor: "rgba(75,192,192,1)",
-                  pointBackgroundColor: "#fff",
-                  pointBorderWidth: 1,
-                  pointHoverRadius: 5,
-                  pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                  pointHoverBorderColor: "rgba(220,220,220,1)",
-                  pointHoverBorderWidth: 2,
-                  pointRadius: 1,
-                  pointHitRadius: 10,
-                  data: [
-                      39, 51, 28
-                  ],
-                  spanGaps: false
-              }
-          ]
-      };
-      var myBarChart = new Chart(ctx, {
-          type: 'bar',
-          data: data,
-          options: {
-              scales: {
-                  yAxes: [{
-                      ticks: {
-                          stepSize: 10,
-                          beginAtZero: false
-                      },
-                      scaleLabel: {
-                          display: true,
-                          labelString: 'Sales'
-                      }
-                  }],
-                  xAxes: [{
-                      ticks: {
-                          stepSize: 1,
-                          beginAtZero: false
-                      },
-                      scaleLabel: {
-                          display: true,
-                          labelString: '3 months data'
-                      }
-                  }]
-              }
-          }
-      });
+    function sales_bar()
+    {
+        var ctx = $("#sales");
+        var data = {
+            labels: ["May", "June", "July","Aug"],
+            datasets: [
+                {
+                    label: "Sales",
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#FF6384",
+                    borderColor: "rgba(75,192,192,1)",
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    data: [
+                        39, 51, 28
+                    ],
+                    spanGaps: false
+                },
+                {
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#FF6384",
+                    borderColor: "rgba(75,192,192,1)",
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    type: 'line',
+                    data: [
+                        39, 51, 28
+                    ],
+                    spanGaps: false
+                },
+                {
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#FF6384",
+                    borderColor: "rgba(75,192,192,1)",
+                    borderCapStyle: 'butt',
+                    borderDash: [4,2],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    type: 'line',
+                    data: [
+                        39, 51, 28,15
+                    ],
+                    spanGaps: false
+                }
+            ]
+        };
+        var myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            stepSize: 10,
+                            beginAtZero: true
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Sales'
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            stepSize: 1,
+                            beginAtZero: true
+                        },
+                        scaleLabel: {
+                            display: true,
+                        }
+                    }]
+                }
+            }
+        });
 
-  }
+    }
 
     function random_number() {
         return Math.random() * 70 + 20;
@@ -174,7 +271,7 @@
     {
         var ctx = $("#customer");
         var data = {
-            labels: ["May", "june", "July"],
+            labels: ["May", "June", "July","Aug"],
             datasets: [
                 {
                     label: "Customer",
@@ -196,35 +293,79 @@
                     pointRadius: 1,
                     pointHitRadius: 10,
                     data: [
-                       139, 138, 129
-    ],
-        spanGaps: false
-    }
+                        139, 138, 129
+                    ],
+                    spanGaps: false
+                },
+                {
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#36A2EB",
+                    borderColor: "rgba(179,181,198,1)",
+                    borderDash: [],
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    type: 'line',
+                    data: [
+                        139, 138, 129
+                    ],
+                    spanGaps: false
+                },
+                {
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#36A2EB",
+                    borderColor: "rgba(179,181,198,1)",
+                    borderDash: [4,2],
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    type: 'line',
+                    data: [
+                        139, 138, 129, 125
+                    ],
+                    spanGaps: false
+                }
             ]
         };
         var myBarChart = new Chart(ctx, {
             type: 'bar',
             data: data,
             options: {
+                legend: {
+                    display: false
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
                             stepSize: 10,
-                            beginAtZero: false
+                            beginAtZero: true
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: 'Sales'
+                            labelString: 'Collections'
                         }
                     }],
                     xAxes: [{
                         ticks: {
                             stepSize: 1,
-                            beginAtZero: false
+                            beginAtZero: true
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: '3 months data'
                         }
                     }]
                 }
@@ -246,7 +387,7 @@
     {
         var ctx = $("#collection");
         var data = {
-            labels: ["May", "june", "July"],
+            labels: ["May", "june", "July", "Aug"],
             datasets: [
                 {
                     label: "Collection",
@@ -271,32 +412,85 @@
                         100, 89, 65
                     ],
                     spanGaps: false
+                },
+                {
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#36A2EB",
+                    borderColor: "rgba(179,181,198,1)",
+                    borderDash: [],
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    type: 'line',
+                    data: [
+                        100, 89, 65
+                    ],
+                    spanGaps: false
+                },
+                {
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#36A2EB",
+                    borderColor: "rgba(179,181,198,1)",
+                    borderDash: [4,2],
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    type: 'line',
+                    data: [
+                        100, 89, 65, 30
+                    ],
+                    spanGaps: false
                 }
             ]
         };
         var myBarChart = new Chart(ctx, {
             type: 'bar',
             data: data,
+
             options: {
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.yLabel;
+                        }
+                    }
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
                             stepSize: 10,
-                            beginAtZero: false
+                            beginAtZero: true
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: 'Sales'
+                            labelString: 'New customers',
+                            'font-size' : '20px'
                         }
                     }],
                     xAxes: [{
                         ticks: {
                             stepSize: 1,
-                            beginAtZero: false
+                            beginAtZero: true
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: '3 months data'
                         }
                     }]
                 }
