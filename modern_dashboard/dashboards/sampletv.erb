@@ -1,65 +1,462 @@
 <script type='text/javascript'>
 $(function() {
-
-  // These settings override the defaults set in application.coffee. You can do this on a per dashboard basis.
-  Dashing.gridsterLayout('[{"col":2,"row":1},{"col":1,"row":1},{"col":3,"row":1},{"col":2,"row":2},{"col":3,"row":2},{"col":1,"row":2},{"col":5,"row":1},{"col":4,"row":2},{"col":2,"row":3}]')
-  Dashing.widget_base_dimensions = [370, 340]
-  Dashing.numColumns = 5
+  Dashing.numColumns = 6
 });
 </script>
-<script type='text/javascript'>
- $(function() {
-   Dashing.gridsterLayout('[{"col":1,"row":1,"size_x":1,"size_y":1},{"col":3,"row":2,"size_x":2,"size_y":1},{"col":1,"row":2,"size_x":1,"size_y":1},{"col":3,"row":1,"size_x":2,"size_y":1},{"col":2,"row":1,"size_x":1,"size_y":1},{"col":1,"row":3,"size_x":1,"size_y":2},{"col":5,"row":1,"size_x":1,"size_y":1},{"col":4,"row":3,"size_x":2,"size_y":2},{"col":2,"row":3,"size_x":2,"size_y":1}]')
- });
- </script>
+
 
 
 <% content_for :title do %>1080p dashboard<% end %>
 
 <div class="gridster">
   <ul>
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-view="Clock"></div>
-      <i class="fa fa-clock-o icon-background"></i>
-    </li>
-
-
-    <li  style = "width : 580px" data-row="1" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="welcome" data-view="Text" data-title="Previous month sales" data-text="."></div>
-    </li>
-
-    <li style = "width : 500px" data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-
-      <div data-id="synergy" data-view="Meter" data-title="This month sale" data-min="0" data-max="100"></div>
-      <div data-id="synergy" data-view="Meter" data-title="This month sale" data-min="0" data-max="100"></div>
-    </li>
-
-    <li  style = "width : 580px" data-row="2" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="sales_barchart" data-view ="BarChart" data-title=" Sales Bar Chart" data-moreinfo=""></div>
-    </li>
-
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="synergy" data-view="Meter" data-moreinfo="In sync with my neighbour!" data-title="This week sale" data-min="0" data-max="100"></div>
-    </li>
-
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="2">
-      <div data-id="buzzwords" data-view="List" data-unordered="true" data-title="Buzzwords" data-moreinfo="# of times said around the office"></div>
-    </li>
-
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="karma" data-view="Number" data-title="Karma" style="background-color:#96bf48;"></div>
-      <i class="fa fa-heart icon-background"></i>
-    </li>
-
-    <li data-row="1" data-col="1" data-sizex="2" data-sizey="2">
-      <div data-id="convergence" data-view="Graph" data-title="Convergence" style="background-color:#47bbb3;"></div>
-    </li>
-
     <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
-      <div data-id="twitter_mentions" data-view="Comments" style="background-color:#ff9618;" data-moreinfo="Tweets tagged with #todayilearned"></div>
-      <i class="fa fa-twitter icon-background"></i>
+      <div data-id="synergy_month" data-view="Meter" data-title="This month's sale" data-min="0" data-max="500"></div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      
+      <div style="overflow-x: auto;">
+        <canvas id="pie" style="width: 600px; height: 500px;"></canvas>
+        </div>
+    </li>
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-id="synergy_week" data-view="Meter"  data-title="This week's sale" data-min="0" data-max="500"></div>
+    </li>
+    <li data-row="2" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="karma" data-view="Number" data-title="Karma" data-current="100" data-last="200" data-max="200" style="background-color:#96bf48;"></div>
     </li>
 
+    <li data-row="2" data-col="2" data-sizex="1" data-sizey="1">
+      <div data-id="valuation" data-view="Number" data-title="Current Valuation" data-prefix="$"></div>
+    </li>
+    <li data-row="3" data-col="1" data-sizex="2" data-sizey="2">
+      <div style="overflow-x: auto;">
+        <canvas id="customer"></canvas>
+      </div>
+    </li>
+    <li data-row="3" data-col="3" data-sizex="2" data-sizey="2">
+      <div style="overflow-x: auto;">
+        <canvas id="sales"></canvas>
+      </div>
+    </li>
+    <li data-row="3" data-col="5" data-sizex="2" data-sizey="2">
+      <div style="overflow-x: auto;">
+        <canvas id="collection"></canvas>
+      </div>
+    </li>
   </ul>
-  <center><div style="font-size: 12px">Try this: curl -d '{ "auth_token": "YOUR_AUTH_TOKEN", "text": "Hey, Look what I can do!" }' \http://<%=request.host%>:<%=request.port%>/widgets/welcome</div></center>
 </div>
+<script type="text/javascript" charset="utf-8">
+  function pie_chart() {
+      var ctx = $("#pie");
+      var data = {
+          datasets: [{
+              data: [random_number(), 10],
+              backgroundColor: [
+                  "#FF6384",
+                  "#36A2EB",
+                  "#FFCE56"
+              ],
+              hoverBackgroundColor: [
+                  "#FF6384",
+                  "#36A2EB",
+                  "#FFCE56"
+              ]
+          }],
+
+          // These labels appear in the legend and in the tooltips when hovering different arcs
+          labels: [
+              'Your contribution',
+              'Team contribution'
+
+          ]
+      };
+      var myPieChart = new Chart(ctx,{
+          type: 'pie',
+          data: data,
+          options: {
+            title: {
+              display: true,
+              text: 'Sales Value',
+              fontSize: 15
+            },
+            legend: {
+              display: true,
+              position: 'bottom'
+            }
+          }
+      });
+
+      function random_number() {
+          return Math.random();
+      }
+
+  }
+  pie_chart()
+  setInterval(pie_chart, 5000)
+
+
+</script>
+<script type="text/javascript" charset="utf-8">
+  function sales_bar()
+  {
+      var ctx = $("#sales");
+      var data = {
+          labels: ["May", "June", "July","Aug"],
+          datasets: [
+              {
+                  label: "Sales",
+                  fill: false,
+                  lineTension: 0,
+                  backgroundColor: "#FF6384",
+                  borderColor: "rgba(75,192,192,1)",
+                  borderCapStyle: 'butt',
+                  borderDash: [],
+                  borderDashOffset: 0.0,
+                  borderJoinStyle: 'miter',
+                  pointBorderColor: "rgba(75,192,192,1)",
+                  pointBackgroundColor: "#fff",
+                  pointBorderWidth: 1,
+                  pointHoverRadius: 5,
+                  pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                  pointHoverBorderColor: "rgba(220,220,220,1)",
+                  pointHoverBorderWidth: 2,
+                  pointRadius: 1,
+                  pointHitRadius: 10,
+                  data: [
+                      39, 51, 28
+                  ],
+                  spanGaps: false
+              },
+                {
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#FF6384",
+                    borderColor: "rgba(75,192,192,1)",
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    type: 'line',
+                    data: [
+                      39, 51, 28
+                    ],
+                    spanGaps: false
+                },
+                {
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#FF6384",
+                    borderColor: "rgba(75,192,192,1)",
+                    borderCapStyle: 'butt',
+                    borderDash: [4,2],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    type: 'line',
+                    data: [
+                      39, 51, 28,15
+                    ],
+                    spanGaps: false
+                }
+          ]
+      };
+      var myBarChart = new Chart(ctx, {
+          type: 'bar',
+          data: data,
+          options: {
+              legend: {
+                    display: false
+                },
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          stepSize: 10,
+                          beginAtZero: true
+                      },
+                      scaleLabel: {
+                          display: true,
+                          labelString: 'Sales'
+                      }
+                  }],
+                  xAxes: [{
+                      ticks: {
+                          stepSize: 1,
+                          beginAtZero: true
+                      },
+                      scaleLabel: {
+                          display: true,
+                      }
+                  }]
+              }
+          }
+      });
+
+  }
+
+    function random_number() {
+        return Math.random() * 70 + 20;
+    }
+
+    sales_bar();
+    setInterval(sales_bar, 10000);
+</script>
+
+
+
+<script type="text/javascript" charset="utf-8">
+    function customer_bar()
+    {
+        var ctx = $("#customer");
+        var data = {
+            labels: ["May", "June", "July","Aug"],
+            datasets: [
+                {
+                    label: "Customer",
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#36A2EB",
+                    borderColor: "rgba(179,181,198,1)",
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    data: [
+                       139, 138, 129
+    ],
+        spanGaps: false
+    },
+                {
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#36A2EB",
+                    borderColor: "rgba(179,181,198,1)",
+                    borderDash: [],
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    type: 'line',
+                    data: [
+                        139, 138, 129
+                    ],
+                    spanGaps: false
+                },
+                {
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#36A2EB",
+                    borderColor: "rgba(179,181,198,1)",
+                    borderDash: [4,2],
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    type: 'line',
+                    data: [
+                        139, 138, 129, 125
+                    ],
+                    spanGaps: false
+                }
+            ]
+        };
+        var myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            stepSize: 10,
+                            beginAtZero: true
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Sales'
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            stepSize: 1,
+                            beginAtZero: true
+                        },
+                        scaleLabel: {
+                            display: true,
+                          }
+                    }]
+                }
+            }
+        });
+
+    }
+
+    function random_number() {
+        return Math.random() * 70 + 20;
+    }
+
+    customer_bar();
+    setInterval(customer_bar, 10000);
+</script>
+
+<script type="text/javascript" charset="utf-8">
+    function collection_bar()
+    {
+        var ctx = $("#collection");
+        var data = {
+            labels: ["May", "june", "July", "Aug"],
+            datasets: [
+                {
+                    label: "Collection",
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#36A2EB",
+                    borderColor: "rgba(179,181,198,1)",
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    data: [
+                        100, 89, 65
+                    ],
+                    spanGaps: false
+                },
+                {
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#36A2EB",
+                    borderColor: "rgba(179,181,198,1)",
+                    borderDash: [],
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    type: 'line',
+                    data: [
+                        100, 89, 65
+                    ],
+                    spanGaps: false
+                },
+                {
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "#36A2EB",
+                    borderColor: "rgba(179,181,198,1)",
+                    borderDash: [4,2],
+                    pointBorderColor: "rgba(75,192,192,1)",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                    pointHoverBorderColor: "rgba(220,220,220,1)",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    type: 'line',
+                    data: [
+                        100, 89, 65, 30
+                    ],
+                    spanGaps: false
+                }
+            ]
+        };
+        var myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+
+            options: {
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    callbacks: {
+                       label: function(tooltipItem) {
+                          return tooltipItem.yLabel;
+                       }
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            stepSize: 10,
+                            beginAtZero: true
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Sales'
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            stepSize: 1,
+                            beginAtZero: true
+                        },
+                        scaleLabel: {
+                            display: true,
+                          }
+                    }]
+                }
+            }
+        });
+
+    }
+
+    function random_number() {
+        return Math.random() * 70 + 20;
+    }
+
+    collection_bar();
+    setInterval(collection_bar, 10000);
+</script>
