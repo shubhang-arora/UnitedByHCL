@@ -3,7 +3,35 @@ $(function() {
   Dashing.numColumns = 6
 });
 </script>
+<style type="text/css">
+  .widget-number {
 
+  background-color: #47bbb3;
+
+  .title {
+    color: $title-color;
+  }
+
+  .value {
+    color: #fff;
+  }
+
+  .change-rate {
+    font-weight: 500;
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .more-info {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .updated-at {
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+}
+</style>
 
 
 <% content_for :title do %>1080p dashboard<% end %>
@@ -22,12 +50,26 @@ $(function() {
     <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
       <div data-id="synergy_week" data-view="Meter"  data-title="This week's sale" data-min="0" data-max="500"></div>
     </li>
-    <li data-row="2" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="karma" data-view="Number" data-title="Karma" data-current="100" data-last="200" data-max="200" style="background-color:#96bf48;"></div>
+    <li data-row="2" data-col="1" data-sizex="2" data-sizey="1">
+    <div class="widget widget-number valuation">
+      <h1 class="title">Sales Value</h1>
+      <h2 class="value">12.2K</h2>
+      <p class="change-rate">
+        <i class="fa fa-arrow-up"></i><span>60%</span>
+      </p>
+      <p class="updated-at">Last updated at <%= Time.now.strftime("%H:%M") %></p>
+      </div>
     </li>
 
-    <li data-row="2" data-col="2" data-sizex="1" data-sizey="1">
-      <div data-id="valuation" data-view="Number" data-title="Current Valuation" data-prefix="$"></div>
+    <li data-row="2" data-col="5" data-sizex="2" data-sizey="1">
+    <div class="widget widget-number valuation">
+      <h1 class="title">New Customers</h1>
+      <h2 class="value">61</h2>
+      <p class="change-rate">
+        <i class="fa fa-arrow-down"></i><span>35%</span>
+      </p>
+      <p class="updated-at">Last updated at <%= Time.now.strftime("%H:%M") %></p>
+      </div>
     </li>
     <li data-row="3" data-col="1" data-sizex="2" data-sizey="2">
       <div style="overflow-x: auto;">
